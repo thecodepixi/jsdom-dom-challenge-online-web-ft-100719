@@ -24,16 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // pausing 
   let pause = document.getElementById("pause")
   pause.addEventListener("click", () => {
+    if (pause.innerText == "pause") {
     clearInterval(timer)
     pause.innerText = "resume"
-    pause.id = "resume"
+    } else if (pause.innerText == "resume"){
+      timer = setInterval(incrementCounter, 1000)
+      pause.innerText = "pause"
+    }
   })
-  // resuming 
-  let resume = document.getElementById("resume")
-  resume.addEventListener("click", () => {
-  setInterval(incrementCounter, 1000)
-  resume.innerText = "pause"
-  resume.id = "pause"
-})
+  // // resuming 
+  // let resume = document.getElementById("resume")
+  // resume.addEventListener("click", () => {
+  //   timer = setInterval(incrementCounter, 1000)
+  //   resume.innerText = "pause"
+  //   resume.id = "pause"
+  // })
+  
   
 })
