@@ -32,13 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
       pause.innerText = "pause"
     }
   })
-  // // resuming 
-  // let resume = document.getElementById("resume")
-  // resume.addEventListener("click", () => {
-  //   timer = setInterval(incrementCounter, 1000)
-  //   resume.innerText = "pause"
-  //   resume.id = "pause"
-  // })
-  
-  
+
+  // add likes NEEDS TO BE FINISHED 
+  let heart = document.getElementById("heart") 
+  heart.addEventListener("click", () => {
+    let likeList = document.getElementsByClassName("likes")[0]
+    let li = document.createElement("li") 
+    let like = document.createTextNode(`${counterNumber} was liked`)
+    li.appendChild(like)
+    li.id = counterNumber 
+    likeList.appendChild(li) 
+  }) 
+
+  // add comments 
+  let commentSubmit = document.getElementById("submit")
+
+  commentSubmit.addEventListener("click", function(event) {
+    let comments = document.getElementById("list")
+    let commentContent = document.createTextNode(document.getElementById("comment-input").value)
+    let newCommentLi = document.createElement("li")
+    newCommentLi.appendChild(commentContent)
+    comments.appendChild(newCommentLi)
+    document.getElementById("comment-input").value = "" 
+
+    event.preventDefault()
+  })
 })
