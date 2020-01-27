@@ -35,13 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // add likes NEEDS TO BE FINISHED 
   let heart = document.getElementById("heart") 
-  heart.addEventListener("click", () => {
-    let likeList = document.getElementsByClassName("likes")[0]
-    let li = document.createElement("li") 
-    let like = document.createTextNode(`${counterNumber} was liked`)
-    li.appendChild(like)
+  let likesList = document.getElementById("likes")
+  function createNewLike() {
+    let li = document.createElement("li")
     li.id = counterNumber 
-    likeList.appendChild(li) 
+    li.innerHTML = `${counterNumber} has been liked <span class="count">1</span> times.`
+    likesList.appendChild(li) 
+  }
+  heart.addEventListener("click", () => {
+    if(likesList.children.length > 0){
+      for(let i = 0; i < likesList.children.length; i++) {
+        if (likesList.children[i].id == counterNumber) {
+          likesList.children[i].querySelector("span.count").textContent = parseInt(likesList.children[i].querySelector("span.count").textContent) + 1 
+        } else {
+            createNewLike(); 
+        }
+      }
+    } else {
+      createNewLike();
+    }
   }) 
 
   // add comments 
