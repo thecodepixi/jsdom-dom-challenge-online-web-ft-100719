@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (likesList.children[i].id == counterNumber) {
           likesList.children[i].querySelector("span.count").textContent = parseInt(likesList.children[i].querySelector("span.count").textContent) + 1 
         } else {
-            createNewLike(); 
-        }
+          createNewLike(); 
+        } 
       }
     } else {
       createNewLike();
