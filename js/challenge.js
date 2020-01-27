@@ -36,23 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // add likes NEEDS TO BE FINISHED 
   let heart = document.getElementById("heart") 
   let likesList = document.getElementById("likes")
-  function createNewLike() {
+  function createNewLike(n) {
     let li = document.createElement("li")
-    li.id = counterNumber 
-    li.innerHTML = `${counterNumber} has been liked <span class="count">1</span> times.`
+    li.id = n 
+    li.innerHTML = `${n} has been liked <span class="count">1</span> times.`
     likesList.appendChild(li) 
   }
   heart.addEventListener("click", () => {
-    if(likesList.children.length > 0){
-      for(let i = 0; i < likesList.children.length; i++) {
-        if (likesList.children[i].id == counterNumber) {
-          likesList.children[i].querySelector("span.count").textContent = parseInt(likesList.children[i].querySelector("span.count").textContent) + 1 
-        } else {
-          createNewLike(); 
-        } 
-      }
+    if (document.getElementById(counterNumber) == null ){
+      createNewLike(counterNumber); 
     } else {
-      createNewLike();
+      for (i = 0; i < likesList.children.length; i++) {
+        if (likesList.children[i].id == counterNumber) {
+              likesList.children[i].querySelector("span.count").textContent = parseInt(likesList.children[i].querySelector("span.count").textContent) + 1 
+            } 
+      }
     }
   }) 
 
