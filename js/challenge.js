@@ -27,9 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (pause.innerText == "pause") {
     clearInterval(timer)
     pause.innerText = "resume"
+    minus.disabled = true 
+    plus.disabled = true 
+    heart.disabled = true 
+    commentSubmit.disabled = true 
     } else if (pause.innerText == "resume"){
       timer = setInterval(incrementCounter, 1000)
       pause.innerText = "pause"
+      minus.disabled = false 
+      plus.disabled = false
+      heart.disabled = false  
+      commentSubmit.disabled = false 
     }
   })
 
